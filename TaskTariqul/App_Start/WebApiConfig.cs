@@ -15,6 +15,12 @@ namespace TaskTariqul
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+            name: "ControllerAndActionOnly",
+            routeTemplate: "api/{controller}/{action}",
+            defaults: new { },
+            constraints: new { action = @"^[a-zA-Z]+([\s][a-zA-Z]+)*$" });
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

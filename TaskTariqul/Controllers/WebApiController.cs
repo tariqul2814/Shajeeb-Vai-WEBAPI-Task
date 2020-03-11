@@ -19,28 +19,58 @@ namespace TaskTariqul.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage AddHoliday(Holiday holiday)
+        public HttpResponseMessage AddHoliday(/*Holiday holiday*/string Name)
         {
-            if(!ModelState.IsValid)
-            {
-                return new HttpResponseMessage(HttpStatusCode.InternalServerError);
-            }
-            else
-            {
-                var holidayTracker = context.Holidays.FirstOrDefault(x=>x.UserId==holiday.UserId && x.From_Date==holiday.From_Date && x.To_Date==holiday.To_Date);
-                var CheckUser = context.Users.FirstOrDefault(x=> x.UserId==holiday.UserId);
-                if(holidayTracker==null && CheckUser!=null)
-                {
-                    context.Holidays.Add(holiday);
-                    context.SaveChanges();
-                    return Request.CreateResponse(HttpStatusCode.Created, holiday);
-                }
-                else
-                {
-                    return new HttpResponseMessage(HttpStatusCode.InternalServerError);
-                }
-                
-            }
+            //#region "Separate From and Year"
+            //int FromDay = holiday.From_Date.Day;
+            //int FromMonth = holiday.From_Date.Month;
+            //int FromYear = holiday.From_Date.Year;
+
+            //int ToDay = holiday.To_Date.Day;
+            //int ToMonth = holiday.To_Date.Month;
+            //int ToYear = holiday.To_Date.Year;
+            //#endregion
+
+            //if(FromYear==ToYear)
+            //{
+            //    if(FromMonth>ToMonth)
+            //    {
+            //        return Request.CreateResponse(HttpStatusCode.InternalServerError, "From Month Larger Than To Month");
+            //    }
+            //    else if(FromMonth == ToMonth)
+            //    {
+            //        if(FromDay>ToDay)
+            //        {
+            return Request.CreateResponse(HttpStatusCode.InternalServerError, "From Day Larger Than To Day");
+            //        }
+            //    }
+            //}
+            //else if(FromYear>ToYear)
+            //{
+            //    return Request.CreateResponse(HttpStatusCode.InternalServerError, "From Year Larger Than To Year");
+            //}
+
+
+            //if (!ModelState.IsValid)
+            //{
+            //    return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+            //}
+            //else
+            //{
+            //    var holidayTracker = context.Holidays.FirstOrDefault(x=>x.UserId==holiday.UserId && x.From_Date==holiday.From_Date && x.To_Date==holiday.To_Date);
+            //    var CheckUser = context.Users.FirstOrDefault(x=> x.UserId==holiday.UserId);
+            //    if(holidayTracker==null && CheckUser!=null)
+            //    {
+            //        context.Holidays.Add(holiday);
+            //        context.SaveChanges();
+            //        return Request.CreateResponse(HttpStatusCode.Created, holiday);
+            //    }
+            //    else
+            //    {
+            //        return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+            //    }
+
+            //}
         }
 
 

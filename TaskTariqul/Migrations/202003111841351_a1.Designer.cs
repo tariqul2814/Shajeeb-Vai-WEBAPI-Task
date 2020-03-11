@@ -13,7 +13,7 @@ namespace TaskTariqul.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202003110942427_a1"; }
+            get { return "202003111841351_a1"; }
         }
         
         string IMigrationMetadata.Source
